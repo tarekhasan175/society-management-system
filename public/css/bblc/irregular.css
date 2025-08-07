@@ -1,0 +1,21 @@
+.widget-color-green {
+    border-color: #6e90a7 !important;
+}
+
+.widget-color-green > .widget-header {
+    background: #6e90a7 !important;
+    border-color: #6e90a7 !important;
+}
+
+.btn.btn-success {
+    background-color: #6e8aa7 !important;
+    border-color: #6e90a7 !important;
+}
+.btn.btn-success:hover {
+    background-color: #557082 !important;
+}
+
+.bg-gray {
+    background: #e7eaec;
+    vertical-align: middle !important;
+}

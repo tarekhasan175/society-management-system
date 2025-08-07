@@ -1,0 +1,96 @@
+<?php
+
+use  Illuminate\Support\Facades\Route;
+use Module\Nagarik\Controllers\HoldingTexApplyController;
+use  Module\Nagarik\Controllers\HotelTexController;
+use  Module\Nagarik\Controllers\HolldingTexController;
+use Module\Nagarik\Controllers\NewTradeLicenseController;
+use Module\Nagarik\Controllers\OldTradeLicenseNagarikAdmin;
+use  Module\Nagarik\Controllers\TradeLicenceController;
+use  Module\Nagarik\Controllers\MarketCostController;
+use  Module\Nagarik\Controllers\HoleTexController;
+use  Module\Nagarik\Controllers\NagorikDashboardController;
+use  Module\Nagarik\Controllers\FinancialYearController;
+use  Module\Nagarik\Controllers\BusinessTypeController;
+use  Module\Nagarik\Controllers\LicenceFeeController;
+use  Module\Nagarik\Controllers\RegionController;
+use Module\Nagarik\Controllers\TradeLicenseNagarikAdminController;
+use Module\Nagarik\Controllers\TradeLicensePaymentController;
+use  Module\Nagarik\Controllers\WordAddController;
+use  Module\Nagarik\Controllers\SectorAddController;
+use  Module\Nagarik\Controllers\AreaAddController;
+use  Module\Nagarik\Controllers\RoadAddController;
+use Module\Nagarik\Controllers\NagorikAdditionalDescriptController;
+use  Module\Nagarik\Controllers\NagorikInstitutrTypeController;
+use  Module\Nagarik\Controllers\NagorikUserDetailsController;
+use  Module\Nagarik\Controllers\HoldingTexApplyControllerAdmin;
+use  Module\Nagarik\Controllers\HoldingPamentController;
+use Module\Nagarik\Controllers\HoldingTexRateController;
+use Module\Nagarik\Controllers\LandTypeController;
+
+Route::group(['prefix' => 'nagarik', 'middleware' => ['auth', 'user']], function () {
+    Route::get('nagorik-dashboard', [NagorikDashboardController::class,'naorikdashboard'])->name('nagorik-dashboard');
+    Route::get('nagorik-user-profile', [NagorikDashboardController::class,'NagarikUserProfile'])->name('nagorik-user-profile');
+    Route::resource('hotel-tax', HotelTexController::class);
+    Route::get('hotel-dashboard', [HotelTexController::class, 'dashboard'])->name('hotel-dashboard');
+    Route::resource('holding-tax', HolldingTexController::class);
+    Route::resource('holding-taxApply', HoldingTexApplyController::class);
+    Route::get('add-holding-number', [HolldingTexController::class,'addNewHoldingNumber'])->name('add-holding-number');
+    Route::get('add-general-request', [HolldingTexController::class,'addGeneralRequest'])->name('add-general-request');
+    Route::get('e-holding-dashboard', [HolldingTexController::class,'eHoldingDashboar'])->name('e-holding-dashboard');
+    Route::get('e-holding-dashboard/show/{id}', [HolldingTexController::class,'eHoldingShow'])->name('e-holding-show');
+    Route::get('e-holding-notice', [HolldingTexController::class,'eHoldingNotice'])->name('e-holding-notice');
+    Route::get('e-holding-details', [HolldingTexController::class,'eHoldingDetails'])->name('e-holding-details');
+    Route::get('name-given', [HolldingTexController::class,'nameGiven'])->name('name-given');
+    Route::get('due-report', [HolldingTexController::class,'dueReport'])->name('due-report');
+    Route::get('quick-pay', [HolldingTexController::class,'quickPay'])->name('quick-pay');
+    Route::get('others-payment', [HolldingTexController::class,'otherPayment'])->name('others-payment');
+    Route::get('tax-details', [HolldingTexController::class,'TexDetails'])->name('tax-details');
+    Route::get('add-trade-number', [TradeLicenceController::class,'addTradeNumber'])->name('add-trade-number');
+    Route::get('new-trade-search', [TradeLicenceController::class,'NewTradeSearch'])->name('new-trade-search');
+    Route::get('new-licence-search', [TradeLicenceController::class,'NewLicenceSearch'])->name('new-licence-search');
+    Route::get('trade-fee', [TradeLicenceController::class,'TradeFee'])->name('trade-fee');
+    Route::get('trade-re-rege', [TradeLicenceController::class,'TradeReRege'])->name('trade-re-rege');
+    Route::get('trade-licence-print', [TradeLicenceController::class,'LicencePrint'])->name('trade-licence-print');
+    Route::get('owner-change', [TradeLicenceController::class,'OwnerChange'])->name('owner-change');
+    Route::get('change-business-type', [TradeLicenceController::class,'ChangeBusinessType'])->name('change-business-type');
+    Route::resource('newtradeapply', TradeLicenceController::class);
+    Route::get('shop-booking', [MarketCostController::class,'ShopBooking'])->name('shop-booking');
+    Route::get('new-hol-tax', [HoleTexController::class,'NewHolRex'])->name('new-hol-tax');
+    Route::post('financial-year-licence-fee', [TradeLicenceController::class,'getLicenceFee']);
+    Route::post('nagorik-city-to-word', [TradeLicenceController::class,'cityTOword']);
+    Route::post('nagorik-word-to-sector', [TradeLicenceController::class,'wordTosector']);
+    Route::post('nagorik-sector-to-block', [TradeLicenceController::class,'blockToblock']);
+    Route::post('nagorik-block-to-road', [TradeLicenceController::class,'blockToroad']);
+    Route::resource('old-trade-license', TradeLicenceController::class);
+    Route::resource('new-trade-license', NewTradeLicenseController::class);
+    Route::resource('nagorik-users', NagorikUserDetailsController::class);
+
+});
+
+
+Route::group(['prefix' => 'nagarik', 'middleware' => 'nagarikadmin'], function () {
+    Route::resource('financial-years', FinancialYearController::class);
+    Route::resource('business-type', BusinessTypeController::class);
+    Route::resource('licence-fee', LicenceFeeController::class);
+    Route::resource('region', RegionController::class);
+    Route::resource('region-words', WordAddController::class);
+    Route::resource('region-sector', SectorAddController::class);
+    Route::resource('region-area', AreaAddController::class);
+    Route::resource('region-road', RoadAddController::class);
+    Route::resource('add-additional', NagorikAdditionalDescriptController::class);
+    Route::resource('add-instituteType', NagorikInstitutrTypeController::class);
+    Route::resource('trade-license-approval', TradeLicenseNagarikAdminController::class);
+    Route::get('trade-license-approved/{id}', [TradeLicenseNagarikAdminController::class,'approvedNewTradeApplication']);
+    Route::get('trade-license-approved-index', [TradeLicenseNagarikAdminController::class,'newTradeLicenseApprovedIndex'])->name('trade-license-approved-index');
+    Route::resource('old-trade-license-approval', OldTradeLicenseNagarikAdmin::class);
+    Route::get('old-trade-license-approved/{id}', [OldTradeLicenseNagarikAdmin::class,'approvedOldTradeApplication']);
+    Route::get('old-trade-license-approved-index', [OldTradeLicenseNagarikAdmin::class,'oldTradeLicenseApprovedIndex'])->name('old-trade-license-approved-index');
+    Route::resource('trade-license-payment', TradeLicensePaymentController::class);
+    Route::resource('holding-tex-payment', HoldingPamentController::class);
+    Route::resource('admin-receive-holding-tex-apply', HoldingTexApplyControllerAdmin::class);
+    Route::get('admin-receive-holding-tex-approve/{id}', [HoldingTexApplyControllerAdmin::class,'adminReceiveHoldingTexApprove']);
+    Route::get('trade-license-payment-pos-invoice/{id}', [TradeLicensePaymentController::class,'posShow']);
+    Route::resource('holding-rates',HoldingTexRateController::class);
+    Route::resource('holding-land-type',LandTypeController::class);
+});

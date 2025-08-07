@@ -1,0 +1,68 @@
+.bg-gray {
+    background: #e7ece9e8;
+    vertical-align: middle !important;
+}
+
+input[type="checkbox"].ace + .lbl::before, input[type="radio"].ace + .lbl::before {
+     margin-right: 10px !important;
+ }
+
+th, td {
+    text-align: center;
+    vertical-align: middle !important;
+    border: 1px solid #ddd;
+}
+
+th {
+    border-color: #ccc;
+}
+
+th, td label, .input-group label{
+    user-select: none !important;
+}
+
+th label .lbl {
+    font-size: 13px;
+    font-weight: bolder !important;
+}
+
+table {
+    width: 100%;
+}
+
+td input {
+    width: 98% !important;
+    margin: auto !important;
+    text-align: center !important;
+}
+
+.table {
+    margin: 0 !important;
+}
+
+.btn.btn-success {
+    /*text-shadow: none !important;*/
+    background-color: #7aad72 !important;
+    border-color: #7aad72 !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.widget-box {
+    margin-bottom: 20px !important;
+}
+
+.widget-color-green {
+    border-color: #83af7c !important;
+}
+
+.widget-color-green>.widget-header {
+    background: #83af7c !important;
+    border-color: #83af7c !important;
+}
+
+.widget-main {
+    padding: 0 !important;
+}

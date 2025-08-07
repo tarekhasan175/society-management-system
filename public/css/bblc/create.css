@@ -1,0 +1,14 @@
+.select-td {
+    width: 366px;
+    border-bottom-color: #ddd;
+}
+
+.lc-row label {
+    user-select: none;
+}
+
+.label-col{
+    height: 34px;
+    margin-bottom: 0;
+    line-height: 22px;
+}
